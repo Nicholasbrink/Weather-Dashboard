@@ -1,27 +1,33 @@
 // // Populate history list from local storage when page loads
-const history = JSON.parse(localStorage.getItem("history"));
-const historySection = document.querySelector("#history");
+const history = JSON.parse(localStorage.getItem("cities")); //JSON.parse = converts string into object // getItem = returns value  of the specified storage object item. // (" ") = HTML ID where value goes?
+const historySection = document.querySelector("#history"); // set variable for HTML ID called history (line 65)
+
 //Open Weather APIKey
 const apiKey = "218a901e53733b9ac26b20f0818fba33"; //weather API Key
 
 // //Set variable to access search form in HTML
-const userInput = document.querySelector("#search-input");
+const userInput = document.querySelector("#search-input"); //(.value) = select class  // (#value) = select ID
 const searchBtn = document.querySelector("#search-button");
+let cities = []; // global scope - make sure its outside of function otherwise
+cities = history;
 
 // Add the history to local storage
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   const cityName = userInput.value;
+
   // Save search term as key-value pair in local storage
   // You can store the value in localStorage with the key value pair. It has two methods setItem(key, value) to store the value in the storage object and getItem(key) to retrieve the value from the storage object. document. getElementById("result").
-  localStorage.setItem(cityName, cityName);
-
+  //create an empty array
+  cities.push(cityName); //push user city name into the array
+  localStorage.setItem("cities", JSON.stringify(cities)); // set item to local storage
+  console.log(cities);
   // Create button for search term
-  const button = document.createElement("button");
-  button.className = "search-button";
-  button.innerHTML = cityName;
-  historySection.appendChild(button);
+  // const button = document.createElement("button");
+  // button.className = "search-button";
+  // button.innerHTML = cityName;
+  // historySection.appendChild(button);
 
   const queryURL =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
