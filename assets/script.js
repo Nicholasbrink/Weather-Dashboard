@@ -20,14 +20,14 @@ searchBtn.addEventListener("click", function (event) {
   // Save search term as key-value pair in local storage
   // You can store the value in localStorage with the key value pair. It has two methods setItem(key, value) to store the value in the storage object and getItem(key) to retrieve the value from the storage object. document. getElementById("result").
   //create an empty array
-  cities.push(cityName); //push user city name into the array
-  localStorage.setItem("cities", JSON.stringify(cities)); // set item to local storage
-  console.log(cities);
-  // Create button for search term
+  // cities.push(cityName); //push user city name into the array
+  // localStorage.setItem("cities", JSON.stringify(cities)); // set item to local storage
+  // console.log(cities);
+  // // Create button for search term
   // const button = document.createElement("button");
   // button.className = "search-button";
   // button.innerHTML = cityName;
-  // historySection.appendChild(button);
+  // history.appendChild(button);
 
   const queryURL =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -150,5 +150,6 @@ window.addEventListener("load", function (event) {
     button.className = "search-button";
     button.innerHTML = key;
     historySection.appendChild(button);
+    console.log(button);
   }
 });
